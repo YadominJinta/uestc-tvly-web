@@ -4,35 +4,44 @@
       :class="{'z-depth-5': selected}"
       class="card"
       @mousemove="$emit('hover')"
-      @touchmove="$emit('hover')">
+      @touchmove="$emit('hover')"
+    >
       <div
         v-if="detail"
-        class="card-image">
+        class="card-image"
+      >
         <img
           :src="snapshot"
           :alt="'Snapshot of ' + channel['Name']"
-          @click="switchChannel">
+          @click="switchChannel"
+        >
         <a
           class="btn-floating halfway-fab"
-          @click="switchChannel">
+          @click="switchChannel"
+        >
           <i class="material-icons">play_arrow</i>
         </a>
       </div>
       <div
         class="card-content"
-        @click="switchChannel">
+        @click="switchChannel"
+      >
         <p class="title">
           {{ channel.Name }}
           <span
             v-if="hasChannelViewers"
-            class="viewers">
+            class="viewers"
+          >
             <i class="material-icons">remove_red_eye</i>
             {{ viewers }}
           </span>
         </p>
         <p
           v-if="currentProgram"
-          class="program-title">{{ currentProgram.title }}</p>
+          class="program-title"
+        >
+          {{ currentProgram.title }}
+        </p>
       </div>
     </div>
   </div>
@@ -61,10 +70,10 @@ export default {
   },
   computed: {
     snapshot() {
-      const template = (this.channel.SnapshotUrlTemplate
-        || (this.category &&
-            this.$store.getters.getCategory(this.category).SnapshotUrlTemplate)
-        || config.defaultSnapshotUrlTemplate);
+      const template = (this.channel.SnapshotUrlTemplate ||
+        (this.category && this.$store.getters
+            .getCategory(this.category).SnapshotUrlTemplate) ||
+        config.defaultSnapshotUrlTemplate);
       return `${format(template, this.channel)}?${this.time}`;
     },
     channelLink() {

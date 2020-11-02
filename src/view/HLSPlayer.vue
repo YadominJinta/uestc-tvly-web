@@ -2,13 +2,19 @@
   <div class="page">
     <ul
       id="scale-menu"
-      class="dropdown-content">
-      <li @click="ratio=null"><a>自动</a></li>
-      <li @click="ratio=0"><a>铺满</a></li>
+      class="dropdown-content"
+    >
+      <li @click="ratio=null">
+        <a>自动</a>
+      </li>
+      <li @click="ratio=0">
+        <a>铺满</a>
+      </li>
       <li
         v-for="ar in allowedAspectRatio"
         :key="ar[0]/ar[1]"
-        @click="ratio=ar[1]/ar[0]">
+        @click="ratio=ar[1]/ar[0]"
+      >
         <a>{{ ar[0] }}:{{ ar[1] }}</a>
       </li>
     </ul>
@@ -16,7 +22,8 @@
       <div class="nav-wrapper">
         <a
           :class="{center: notMobile}"
-          class="brand-logo channel-title">
+          class="brand-logo channel-title"
+        >
           <span class="hide-on-small-only">
             {{ currentChannel.Category }}/
           </span>
@@ -24,31 +31,37 @@
         </a>
         <router-link
           :to="backLink"
-          class="sidenav-trigger show-on-large">
+          class="sidenav-trigger show-on-large"
+        >
           <i class="material-icons">arrow_back</i>
         </router-link>
         <ul class="right">
           <li
             v-if="engine"
-            class="hide-on-small-only icon">
+            class="hide-on-small-only icon"
+          >
             <a>
               <i
                 :class="[engineIcon]"
-                class="zmdi"/>
+                class="zmdi"
+              />
             </a>
           </li>
           <li
             class="icon"
-            @click="star">
+            @click="star"
+          >
             <a><i class="material-icons">{{ starIcon }}</i></a>
           </li>
           <li
             v-if="currentEPG"
-            class="hide-on-small-only icon">
+            class="hide-on-small-only icon"
+          >
             <a
               id="epg"
               class="modal-trigger"
-              href="#epg-modal">
+              href="#epg-modal"
+            >
               <i class="material-icons">playlist_play</i>
             </a>
           </li>
@@ -56,7 +69,8 @@
             <a
               id="help"
               class="modal-trigger"
-              href="#help-modal">
+              href="#help-modal"
+            >
               <i class="material-icons">keyboard</i>
             </a>
           </li>
@@ -64,7 +78,8 @@
             <a
               href="#"
               class="dropdown-trigger"
-              data-target="scale-menu">
+              data-target="scale-menu"
+            >
               <i class="material-icons">settings_overscan</i>
             </a>
           </li>
@@ -72,18 +87,23 @@
       </div>
     </nav>
     <div class="valign-wrapper player-container grey darken-3">
-      <div class="player fp-mute center-align"/>
+      <div class="player fp-mute center-align" />
     </div>
     <div
       id="help-modal"
-      class="modal">
+      class="modal"
+    >
       <div class="modal-content">
         <h4>键盘绑定</h4>
         <table class="centered highlight">
           <thead>
             <tr>
-              <th data-field="key">按键</th>
-              <th data-field="function">功能</th>
+              <th data-field="key">
+                按键
+              </th>
+              <th data-field="function">
+                功能
+              </th>
             </tr>
           </thead>
 
@@ -126,15 +146,22 @@
     </div>
     <div
       id="epg-modal"
-      class="modal">
+      class="modal"
+    >
       <div class="modal-content">
         <h4>节目列表</h4>
         <table class="centered responsive-table">
           <thead>
             <tr>
-              <th data-field="date">日期</th>
-              <th data-field="time">时间</th>
-              <th data-field="title">标题</th>
+              <th data-field="date">
+                日期
+              </th>
+              <th data-field="time">
+                时间
+              </th>
+              <th data-field="title">
+                标题
+              </th>
             </tr>
           </thead>
 
@@ -142,7 +169,8 @@
             <tr
               v-for="(program, index) in currentEPG"
               :key="index"
-              :class="{'current-program': program.now}">
+              :class="{'current-program': program.now}"
+            >
               <td>{{ program.date }}</td>
               <td>{{ program.start }} - {{ program.stop }}</td>
               <td>{{ program.title }}</td>
@@ -273,9 +301,9 @@ export default {
     },
     clip() {
       if (this.existedChannel) {
-        const template = (this.currentChannel.HlsUrlTemplate
-          || this.currentCategory.HlsUrlTemplate
-          || config.defaultHlsUrlTemplate);
+        const template = (this.currentChannel.HlsUrlTemplate ||
+          this.currentCategory.HlsUrlTemplate ||
+          config.defaultHlsUrlTemplate);
         return {
           sources: [{
             type: 'application/x-mpegurl',
@@ -466,15 +494,15 @@ export default {
         } else if (containerHeight / containerWidth > this.ratio) {
           player.style.width = '100%';
           player.style['margin-top'] =
-            (containerHeight - containerWidth * this.ratio) / 2
-            + 'px';
+            (containerHeight - containerWidth * this.ratio) / 2 +
+            'px';
           player.style.height = containerWidth * this.ratio + 'px';
         } else {
           player.style.height = '100%';
           if (!fullscreen) {
             player.style['margin-left'] =
-              (containerWidth - containerHeight / this.ratio) / 2
-              + 'px';
+              (containerWidth - containerHeight / this.ratio) / 2 +
+              'px';
           }
           player.style.width = containerHeight / this.ratio + 'px';
         }

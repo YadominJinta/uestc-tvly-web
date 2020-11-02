@@ -1,7 +1,8 @@
 <template>
   <i
     class="material-icons"
-    @click="recognize">keyboard_voice</i>
+    @click="recognize"
+  >keyboard_voice</i>
 </template>
 
 <script>

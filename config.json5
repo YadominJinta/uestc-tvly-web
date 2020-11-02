@@ -1,8 +1,5 @@
 {
-	/*
-	 * basic informations
-	 */
-	// titles, required.
+	// title, required.
 	"name": "IPTV",
 
 	// required.
@@ -23,9 +20,6 @@
 	// base url of the web app, MUST be ended with slash, required.
 	"baseUrl": "/",
 
-	/*
-	 * supporting
-	 */
 	// optional.
 	"mailbox": "iptv@uestclug.org",
 
@@ -35,9 +29,6 @@
 	// optional.
 	"telegram": null,
 
-	/*
-	 * urls
-	 */
 	// where to get channel list, required.
 	"channelsUrlList": [
 		"https://iptv.uestc.edu.cn/channels.json",
@@ -76,9 +67,6 @@
 	// url of the logo of the sponsor, required.
 	"sponsorLogoUrl": "https://iptv.uestc.edu.cn/logo.png",
 
-	/*
-	 * others
-	 */
 	// which modern browser do you recommend? required.
 	"recommendedBrowser": "Firefox",
 
@@ -89,10 +77,8 @@
 	// each channel be refreshed in seconds, optional.
 	"channelViewersRefreshInterval": 30,
 
-	/*
-	 * colors, required.
-	 */
-	"primaryColor": "#5cbdb9", // Blue Greeny
+	// colors, required.
+	"primaryColor": "#4fa29f", // Blue Greeny
 	"secondaryColor": "#212121", // grey darken-4
 
 	// optional

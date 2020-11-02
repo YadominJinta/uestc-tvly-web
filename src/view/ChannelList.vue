@@ -6,17 +6,19 @@
       appear
       name="channel-list"
       mode="out-in"
-      class="row">
+      class="row"
+    >
       <channel-thumbnail
         v-for="(c, index) in filteredList"
+        :key="c.Vid"
         :channel="c"
         :category="category"
-        :key="c.Vid"
         :detail="detail"
         :selected="selectedChannel === c"
         class="col l4 m6 s12 channel-list-item"
         @hover="selected = index"
-        @channel="$emit('channel', $event)"/>
+        @channel="$emit('channel', $event)"
+      />
     </transition-group>
   </div>
 </template>

@@ -1,7 +1,8 @@
 <template>
   <a
     v-if="supported"
-    @click="connect">
+    @click="connect"
+  >
     <i class="material-icons">
       {{ icon }}
     </i>

@@ -1,7 +1,8 @@
 <template>
   <div
     id="body"
-    class="grey lighten-4">
+    class="grey lighten-4"
+  >
     <header>
       <nav>
         <div class="container">
@@ -9,7 +10,8 @@
             <a class="brand-logo">{{ appName }}</a>
             <a
               data-target="nav-menu"
-              class="sidenav-trigger">
+              class="sidenav-trigger"
+            >
               <i class="material-icons">menu</i>
             </a>
             <ul class="right">
@@ -25,19 +27,22 @@
 
       <ul
         id="nav-menu"
-        class="sidenav sidenav-fixed">
+        class="sidenav sidenav-fixed"
+      >
         <li>
           <div class="user-view">
             <div class="background">
               <img
                 :src="background"
-                alt="background">
+                alt="background"
+              >
             </div>
             <a>
               <img
                 :src="avatar"
                 class="circle"
-                alt="avatar">
+                alt="avatar"
+              >
             </a>
             <a><span class="white-text type">{{ userType }}</span></a>
             <a><span class="white-text uid">{{ uid }}</span></a>
@@ -46,63 +51,79 @@
         <li class="search">
           <div
             :class="{focused: filter || searching}"
-            class="search-wrapper card">
+            class="search-wrapper card"
+          >
             <input
               id="search"
               v-model="filter"
               type="search"
               @focus="searching = true"
-              @blur="searching = false">
+              @blur="searching = false"
+            >
             <i
               v-if="filter"
               class="material-icons"
-              @click="filter = ''">close</i>
+              @click="filter = ''"
+            >close</i>
             <speech-recognition
               v-else-if="voidSearch"
               :options="recognitionOption"
-              @result="filter = $event"/>
+              @result="filter = $event"
+            />
             <i
               v-else
-              class="material-icons">search</i>
+              class="material-icons"
+            >search</i>
           </div>
         </li>
         <li
           v-for="c in channels['Categories']"
           :key="c['Name']"
           :class="{active: c['Name'] == category}"
-          class="sidenav-close">
+          class="sidenav-close"
+        >
           <router-link
             :to="categoryLink(c)"
-            replace>{{ c['Name'] }}</router-link>
+            replace
+          >
+            {{ c['Name'] }}
+          </router-link>
         </li>
-        <li><div class="divider"/></li>
+        <li><div class="divider" /></li>
         <li
           :class="{active: $route.name == 'star'}"
-          class="sidenav-close">
-          <router-link :to="{ name: 'star' }">收藏列表</router-link>
+          class="sidenav-close"
+        >
+          <router-link :to="{ name: 'star' }">
+            收藏列表
+          </router-link>
         </li>
         <li
           v-if="hasEPG"
           :class="{active: $route.name == 'program'}"
-          class="sidenav-close">
-          <router-link :to="{ name: 'program' }">当前节目列表</router-link>
+          class="sidenav-close"
+        >
+          <router-link :to="{ name: 'program' }">
+            当前节目列表
+          </router-link>
         </li>
         <li
           v-if="legacyUrl"
-          class="sidenav-close">
+          class="sidenav-close"
+        >
           <a :href="legacyUrl">
             回忆旧版
           </a>
         </li>
         <li
           v-if="uid && !withIP"
-          class="sidenav-close">
+          class="sidenav-close"
+        >
           <a @click="$emit('logout')">
             登出
           </a>
         </li>
       </ul>
-
     </header>
 
     <main>
@@ -110,11 +131,11 @@
         :filter="filter"
         :detail="detail"
         :disable-key-binding="searching"
-        @channel="switchChannel($event)"/>
+        @channel="switchChannel($event)"
+      />
     </main>
 
-    <iptv-footer/>
-
+    <iptv-footer />
   </div>
 </template>
 
@@ -124,7 +145,7 @@ import {mapGetters} from 'vuex';
 import Materialize from 'materialize-css';
 
 import IPTVFooter from './IPTVFooter.vue';
-import CastController from './CastController.vue';
+// import CastController from './CastController.vue';
 import SpeechRecognition from './SpeechRecognition.vue';
 
 import {categoryLink, channelLink} from '../route/link.js';
@@ -144,7 +165,7 @@ function getDetail() {
 export default {
   name: 'ListView',
   components: {
-    CastController,
+    // CastController,
     SpeechRecognition,
     'iptv-footer': IPTVFooter,
   },

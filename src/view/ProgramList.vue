@@ -5,19 +5,25 @@
         <tr>
           <th>标题</th>
           <th>频道</th>
-          <th v-if="hasChannelViewers">观众</th>
+          <th v-if="hasChannelViewers">
+            观众
+          </th>
         </tr>
       </thead>
 
       <tbody
         v-for="program in sortedCurrentPrograms"
-        v-if="program && channelMap[program.channel]"
         :key="program.channel"
-        @click="switchChannel(program.channel)">
-        <tr>
+        @click="switchChannel(program.channel)"
+      >
+        <tr
+          v-if="channelMap[program.channel]"
+        >
           <td>{{ program.title }}</td>
           <td>{{ channelMap[program.channel].Name }}</td>
-          <td v-if="hasChannelViewers">{{ program.viewers }}</td>
+          <td v-if="hasChannelViewers">
+            {{ program.viewers }}
+          </td>
         </tr>
       </tbody>
     </table>
@@ -63,8 +69,8 @@ export default {
     },
     sortedCurrentPrograms() {
       return this.filteredCurrentPrograms.slice(0).sort((a, b) => {
-        return (this.hasChannelViewers && b.viewers - a.viewers)
-          || a.channel.localeCompare(b.channel);
+        return (this.hasChannelViewers && b.viewers - a.viewers) ||
+          a.channel.localeCompare(b.channel);
       });
     },
     ...mapState([
