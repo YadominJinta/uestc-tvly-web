@@ -1,7 +1,6 @@
 {
   "name": "iptv",
   "description": "A Vue.js based iptv frontend",
-  "version": "1.2.2",
   "author": "Hui Yiqun <huiyiqun@gmail.com>",
   "private": true,
   "scripts": {

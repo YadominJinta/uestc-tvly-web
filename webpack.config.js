@@ -7,7 +7,6 @@ const OfflinePlugin = require('offline-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const config = require('./config.json5');
-const meta = require('./package');
 
 module.exports = {
   entry: ['@babel/polyfill', 'whatwg-fetch', './src/main.js'],
@@ -102,7 +101,6 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
-      WEBPACK_APP_VERSION: JSON.stringify(meta.version),
       WEBPACK_TIMESTAMP: JSON.stringify(Date.now()),
     }),
     new HtmlWebpackPlugin({

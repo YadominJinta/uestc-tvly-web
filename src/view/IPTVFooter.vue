@@ -8,13 +8,10 @@
             v-if="srcCredit"
             class="grey-text text-lighten-5">感谢{{ srcCredit }}提供视频源</p>
           <p class="grey-text text-lighten-5">
-            感谢
-            <a
-              href="http://www.flaticon.com/authors/madebyoliver"
-              class="grey-text text-lighten-5">
-              Madebyoliver
-            </a>
-            的 Logo
+            感谢<a
+              href="https://github.com/tvly/tvly-web"
+              class="grey-text text-lighten-5"
+            >清华大学</a>的前端模板
           </p>
         </div>
         <div class="col l4 offset-l2 s12">
@@ -58,8 +55,8 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-        Powered by {{ sponsor }} © 2017
-        Ver.{{ version }}@{{ built.toLocaleString() }}
+        Powered by {{ sponsor }} © {{ new Date().getFullYear() }}
+        ({{ version }})
       </div>
     </div>
   </footer>
@@ -77,7 +74,7 @@ export default {
       wechat: config.wechat,
       telegram: config.telegram,
       sponsor: config.sponsor,
-      version: WEBPACK_APP_VERSION,
+      version: config.version,
       built: new Date(WEBPACK_TIMESTAMP),
     };
   },
