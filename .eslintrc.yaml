@@ -6,6 +6,7 @@ env:
     browser: true
     es6: true
     commonjs: true
+    node: true
 parserOptions:
     sourceType: module
     ecmaVersion: 2018
@@ -14,6 +15,7 @@ rules:
     no-console: ["error", { "allow": ["warn", "error"] }]
     max-len: warn
     vue/require-default-prop: off
+    vue/return-in-computed-property: off
 globals:
     WEBPACK_APP_VERSION: true
     WEBPACK_TIMESTAMP: true
